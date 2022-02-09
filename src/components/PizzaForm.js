@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
-function PizzaForm() {
+function PizzaForm({ pizza }) {
+
   return (
     <form onSubmit={null /*handle that submit*/}>
       <div className="form-row">
@@ -10,10 +11,12 @@ function PizzaForm() {
             type="text"
             name="topping"
             placeholder="Pizza Topping"
+            value={pizza.topping}
+            // onChange={(e) => setTopping(e.target.value)}
           />
         </div>
         <div className="col">
-          <select className="form-control" name="size">
+          <select className="form-control" name="size" value={pizza.size}>
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
             <option value="Large">Large</option>
@@ -25,7 +28,8 @@ function PizzaForm() {
               className="form-check-input"
               type="radio"
               name="vegetarian"
-              value="Vegetarian"
+              checked={pizza.vegetarian ? true : false}
+              // onChange={handleVegClick}
             />
             <label className="form-check-label">Vegetarian</label>
           </div>
@@ -34,7 +38,8 @@ function PizzaForm() {
               className="form-check-input"
               type="radio"
               name="vegetarian"
-              value="Not Vegetarian"
+              checked={pizza.vegetarian ? false : true}
+              // onClick={handleVegClick}
             />
             <label className="form-check-label">Not Vegetarian</label>
           </div>
